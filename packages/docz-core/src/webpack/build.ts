@@ -53,13 +53,13 @@ const builder = async (config: CFG, previousFileSizes: any) =>
         return reject(new Error(messages.errors.join('\n\n')))
       }
 
-      if (hasCiEnvVar() && messages.warnings.length) {
-        logger.warn(
-          '\nTreating warnings as errors because process.env.CI = true.\n' +
-            'Most CI servers set it automatically.\n'
-        )
-        return reject(new Error(messages.warnings.join('\n\n')))
-      }
+      // if (hasCiEnvVar() && messages.warnings.length) {
+      //   logger.warn(
+      //     '\nTreating warnings as errors because process.env.CI = true.\n' +
+      //       'Most CI servers set it automatically.\n'
+      //   )
+      //   return reject(new Error(messages.warnings.join('\n\n')))
+      // }
 
       return resolve({
         stats,
@@ -81,13 +81,13 @@ const onSuccess = (
     logger.warn(warnings.join('\n\n'))
     logger.warn(
       '\nSearch for the ' +
-        chalk.underline(chalk.yellow('keywords')) +
-        ' to learn more about each warning.'
+      chalk.underline(chalk.yellow('keywords')) +
+      ' to learn more about each warning.'
     )
     logger.warn(
       'To ignore, add ' +
-        chalk.cyan('// eslint-disable-next-line') +
-        ' to the line before.\n'
+      chalk.cyan('// eslint-disable-next-line') +
+      ' to the line before.\n'
     )
   }
 
